@@ -28,6 +28,7 @@ const section1 = document.querySelector("#section1");
 const section2 = document.querySelector("#section2");
 const section3 = document.querySelector("#section3");
 const section4 = document.querySelector("#section4");
+
 /**
  * End Global Variables
  * Start Helper Functions
@@ -67,15 +68,19 @@ function makeActive() {
     if (box.top <= 150 && box.bottom >= 150) {
       // Apply active state on the current section and the corresponding Nav link.
       section.classList.add("your-active-class");
+
+      //this.parentNode.classList.add('active');
     } else {
       // Remove active state from other section and corresponding Nav link.
       section.classList.remove("your-active-class");
     }
+
+    
   }
 }
 
 // Scroll to anchor ID using scrollTO event
-
+// document.addEventListener();
 /**
  * End Main Functions
  * Begin Events
@@ -89,3 +94,15 @@ document.addEventListener("scroll", function () {
   makeActive();
 });
 // Set sections as active
+
+const links = document.querySelectorAll(".menu__link");
+
+for (const link of links) {
+  link.addEventListener("click", function () {
+    let current = document.querySelector(".active");
+    if (current) current.classList.remove("active");
+
+    //link.classList.add("active");
+    this.parentNode.classList.add("active");
+  });
+}
